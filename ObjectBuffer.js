@@ -56,7 +56,6 @@ class ObjectBuffer
                 count = rear - front;
             }
             count = Math.min(count, rear - front);
-            console.log(`REMOVE => ${count}`);
             const batch = this.db.batch();
             for(let i=0;i<count;i++) {
                 const key = new Buffer(4); key.writeInt32BE(++front);
@@ -117,7 +116,6 @@ class ObjectBuffer
 
     async flush() {
         if(this.buffer.length == 0) {
-            console.log('empty!');
             return;
         }
 
